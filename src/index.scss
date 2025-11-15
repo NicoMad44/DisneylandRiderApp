@@ -1,0 +1,59 @@
+$warning-color: #cc0000
+
+
+
+:root {
+  
+}
+
+h2, h3, p {
+    margin:0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+main{
+  display: flex;
+
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 1.1;
+}
+
+
+
+.attraction{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+    .attractionIcon{
+        width: 10%;
+    }
+    .attractionInfo{
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        .closed{
+            color: $warning-color
+        }
+        .location{
+            display: flex;
+            gap: 20px;
+        }
+    }
+    .attractionKpi{
+        display: flex;
+        font-size: x-large;
+        font-weight: 700;
+    }
+}
