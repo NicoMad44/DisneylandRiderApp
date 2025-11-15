@@ -1,14 +1,6 @@
-$warning-color: #cc0000
+$warning-color: #cc0000;
 
 
-
-:root {
-  
-}
-
-h2, h3, p {
-    margin:0;
-}
 
 body {
   margin: 0;
@@ -16,6 +8,10 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+h2, h3, p {
+    margin:0;
 }
 
 main{
