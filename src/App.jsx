@@ -1,24 +1,32 @@
 import { useEffect, useState } from "react";
 import { Attraction } from "./components/Attraction/Attraction";
+import { Header } from "./components/Header/Header";
+
+import { lands } from "./data/lands";
+
+
 
 
 function App() {
   const [disneyData, setDisneyData] = useState(null);
 
+
   useEffect(() => {
-    async function fetchDisneyData() {
+    const fetchData = async () => {
       try {
         const response = await fetch('/api/parks/4/queue_times.json');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setDisneyData(data); // Les données sont en state
+        console.log(data);
+        setDisneyData(data);
       } catch (error) {
         console.error('Fetch error:', error);
       }
-    }
-    fetchDisneyData();
+    };
+  
+    fetchData();
   }, []);
 
   if (!disneyData || !disneyData.lands) {
@@ -61,6 +69,7 @@ function App() {
   return (
    <div>
     <h1>DisneyLand Paris - Temps d'attente live</h1>
+    <Header lands={lands}/>
     <main>
       <div>
         <h2>Fantasiland - Longest to Shortest</h2>

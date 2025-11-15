@@ -1,3 +1,38 @@
+.Advantureland {
+  font-family: "Princess Sofia";
+  color: darkblue;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.Fantaisiland {
+  font-family: "Butterfly Kids";
+  color: darkblue;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.MainStreetUSA {
+  font-family: "Old Standard TT";
+  color: darkblue;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.Discoveryland {
+  font-family: "Audiowide";
+  color: darkblue;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.Frontierland {
+  font-family: "Smokum";
+  color: darkblue;
+  font-size: 24px;
+  font-weight: 400;
+}
+
 body {
   margin: 0;
   display: -webkit-box;
@@ -23,6 +58,22 @@ main {
 h1 {
   font-size: 2em;
   line-height: 1.1;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.landsFilters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.landsFilters .landsFilters--button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
 }
 
 .attraction {
