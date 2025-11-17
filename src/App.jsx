@@ -8,19 +8,19 @@ import { lands } from "./data/lands";
 
 
 function App() {
-  const [disneyData, setDisneyData] = useState(null);
-
+  
+  // We get the data from the API
+  const [disneylandData, setDisneylandData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/parks/4/queue_times.json');
+        const response = await fetch('/api/parks/4/queue_times.json'); // 28 pour studio
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data);
-        setDisneyData(data);
+        setDisneylandData(data.lands);
       } catch (error) {
         console.error('Fetch error:', error);
       }
@@ -29,23 +29,38 @@ function App() {
     fetchData();
   }, []);
 
-  if (!disneyData || !disneyData.lands) {
+  if (!disneylandData) {
     return <p>Chargement...</p>;
   }
 
-  const fantasilandRides = disneyData.lands[2].rides;
+  console.log(disneylandData)
 
+  const disneylandRides = []
+
+  disneylandData.map( (land) => 
+    land.rides.map((ride) => {      
+      ride.land = land.name;
+      disneylandRides.push(ride)
+    })
+  );
+
+  console.log(disneylandRides)
+
+/*   // We ammend the data to add some info
+  const fantasilandRides = disneylandData[2].rides;
   fantasilandRides.forEach(ride =>  {
-
     ride.parc = "Disneyland";
-    ride.land = "Fantasiland"
-    
-  });
+    ride.land = "Fantaisiland"
+  }); */
 
-  const testList = fantasilandRides.filter((ride) => (ride.id === 22 || ride.id === 18))
+  const [selectedLands, setSelectedLands] = useState([])
 
-  const fantasilandRidesTimeAscending = [...fantasilandRides].sort((a, b) => b.wait_time - a.wait_time );
-  const fantasilandTimeAscending = fantasilandRidesTimeAscending.map((ride) =>  
+  // on trie par temps d'attente
+  const disneylandRidesTimeDecending = [...disneylandRides].sort((a, b) => b.wait_time - a.wait_time );
+  
+
+  // Attractions
+  const attractionsElementsListToDisplay = disneylandRidesTimeDecending.map((ride) =>  
     <Attraction key={ride.id}
       id={ride.id}
       name={ride.name}
@@ -56,29 +71,12 @@ function App() {
       />
   )
 
-  const fantasilandRidesTimeDecending = [...testList].sort((a, b) => a.wait_time - b.wait_time );
-  const fantasilandTimeDecending = fantasilandRidesTimeDecending.map((ride) =>  
-    <p key={ride.id}>{ride.id}-{ride.name} -- {ride.wait_time}  Min</p>
-  )
-
-  
-
-
-
-
   return (
    <div>
-    <h1>DisneyLand Paris - Temps d'attente live</h1>
-    <Header lands={lands}/>
-    <main>
-      <div>
-        <h2>Fantasiland - Longest to Shortest</h2>
-        {fantasilandTimeAscending}    
-      </div>
-      {/* <div>
-        <h2>Fantasiland - Shortest to Longest Q</h2>
-        {fantasilandTimeDecending}    
-      </div> */}
+
+    <Header lands={disneylandData} selectedLands={selectedLands} setSelectedLands={selectedLands}/>
+    <main className="mainContainer">
+        {attractionsElementsListToDisplay}    
     </main>
    </div>
   )

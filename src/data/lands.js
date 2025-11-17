@@ -2,26 +2,31 @@ export const lands =
 [
     {
         "localid": 1,
+        "id": 21,
         "parc": "Disneyland",
 		"name": "Main Street USA"
     },
     {
         "localid": 2,
+        "id": 20,
         "parc": "Disneyland",
 		"name": "Frontierland"
     },
     {
         "localid": 3,
+        "id": 17,
         "parc": "Disneyland",
 		"name": "Advantureland"
     },
     {
         "localid": 4,
+        "id": 19,
         "parc": "Disneyland",
 		"name": "Fantaisiland"
     },
     {
         "localid": 5,
+        "id": 18,
         "parc": "Disneyland",
 		"name": "Discoveryland"
     }

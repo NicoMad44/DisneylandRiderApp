@@ -1,17 +1,19 @@
 $warning-color: #cc0000;
+$fantasiland-bg-color: #ffc5e0;
 
-.Advantureland{
+.Adventureland{
     font-family: "Princess Sofia";
     color: darkblue;
     font-size: 21px;
     font-weight: 800;
 }
 
-.Fantaisiland{
+.Fantasyland{
     font-family: "Butterfly Kids";
     color: darkblue;
     font-size: 26px;
     font-weight: 800;
+    background-color: $fantasiland-bg-color;
 }
 
 .MainStreetUSA{
@@ -36,64 +38,81 @@ $warning-color: #cc0000;
 }
 
 body {
-  margin: 0;
+  margin-right: 50px;
+  margin-left: 50px;
   display: flex;
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+    .landsFilters{
+        margin-top: -90px;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 50px;
+        width:80%;
+        .landsFilters--button{
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+        }
+    }
+    .logo{
+        width: 400px;
+        margin-top: -100px;
+        
+    }
+}
+
+
+
 h2, h3, p {
     margin:0;
 }
 
 main{
-  display: flex;
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    .attraction{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        margin-top: 50px;
+        .attractionIcon{
+            width: 10%;
+        }
+        .attractionInfo{
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            .closed{
+                color: $warning-color
+            }
+            .location{
+                display: flex;
+                gap: 20px;
+            }
+        }
+        .attractionKpi{
+            display: flex;
+            font-size: x-large;
+            font-weight: 700;
+        }
+    }
+  }
 
-}
 
 h1 {
   font-size: 2em;
   line-height: 1.1;
   text-align: center;
   margin-bottom: 50px;
-}
-
-.landsFilters{
-    display: flex;
-    justify-content: space-around;
-    .landsFilters--button{
-        border: none;
-        border-radius: 20px;
-        padding: 10px 20px;
-    }
-}
-
-
-.attraction{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    margin-top: 50px;
-    .attractionIcon{
-        width: 10%;
-    }
-    .attractionInfo{
-        display: flex;
-        flex-direction: column;
-        width: 70%;
-        .closed{
-            color: $warning-color
-        }
-        .location{
-            display: flex;
-            gap: 20px;
-        }
-    }
-    .attractionKpi{
-        display: flex;
-        font-size: x-large;
-        font-weight: 700;
-    }
 }
