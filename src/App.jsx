@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Attraction } from "./components/Attraction/Attraction";
 import { Header } from "./components/Header/Header";
+import { excludedAttractions } from "./data/excludedAttractions";
 
 import { lands } from "./data/lands";
 
@@ -13,6 +14,7 @@ function App() {
 
   // We get the data from the API
   const [disneylandData, setDisneylandData] = useState(null);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +29,6 @@ function App() {
         console.error('Fetch error:', error);
       }
     };
-  
     fetchData();
   }, []);
 
@@ -36,11 +37,16 @@ function App() {
   }
 
   const disneylandRides = []
+  const excludedId = []
+
+  excludedAttractions.forEach((excludAtt)=>{excludedId.push(excludAtt.id)});
 
   selectedLands.map( (land) => 
     land.rides.map((ride) => {      
       ride.land = land.name;
-      disneylandRides.push(ride)
+      if(!excludedId.includes(ride.id)){
+        disneylandRides.push(ride)
+      }
     })
   );
 
@@ -60,12 +66,11 @@ function App() {
   )
 
   return (
-   <div>
-
-    <Header lands={disneylandData} selectedLands={selectedLands} setSelectedLands={setSelectedLands}/>
-    <main className="mainContainer">
-        {attractionsElementsListToDisplay}    
-    </main>
+   <div className="app">
+      <Header lands={disneylandData} selectedLands={selectedLands} setSelectedLands={setSelectedLands}/>
+      <main className="mainContainer">
+          {attractionsElementsListToDisplay}    
+      </main>
    </div>
   )
 }

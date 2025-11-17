@@ -1,8 +1,9 @@
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export function Header({lands, selectedLands, setSelectedLands}){
 
+    const [filterActive, setFilterActive] = useState("")
 
     const filterButtonClick = (e) => {
         if(!selectedLands.includes(e)) {
@@ -12,10 +13,10 @@ export function Header({lands, selectedLands, setSelectedLands}){
         }
     }
 
-    useEffect(() => {
-        console.log(selectedLands);
-      }, [selectedLands]);
-
+    /* const filterButtonClickAll = ()=>{
+        setSelectedLands([]);
+        /* lands.forEach((land)=>{setSelectedLands(prevList => [...prevList, land])}) 
+    } */
 
     return (
         <header className="header" >
@@ -24,10 +25,35 @@ export function Header({lands, selectedLands, setSelectedLands}){
                 {lands.map((land)=>
                 <button 
                     key={land.id}
-                    className={`landsFilters--button ${land.name.replace(/[\s\\.]/g, '')}`}
+                    className={
+                        `landsFilters__button
+                            ${land.name.replace(/[\s\\.]/g, '')} ${selectedLands.includes(land)?
+                                `${land.name.replace(/[\s\\.]/g, '')}--active`:
+                                `${land.name.replace(/[\s\\.]/g, '')}`
+                                }`
+                            }
                     onClick={()=>filterButtonClick(land)} 
                     >{land.name}</button>
                 )}
+                  <button 
+                    key="MickeyCache"
+                    className="landsFilters__button allLandButton"
+                    onClick={()=>{
+                        console.log(selectedLands.length===lands.length)
+                        if(selectedLands.length===lands.length){
+                            setSelectedLands([])
+                            console.log("vider")
+                            } else {
+                            setSelectedLands(lands)
+                            console.log("remplir")
+                            }
+                        }
+                    } 
+                    >{
+                        selectedLands.length===lands.length ? "🗑️": "ALL"
+                    }
+                    </button>
+
             </div>
         </header>
 

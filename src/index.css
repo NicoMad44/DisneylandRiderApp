@@ -1,53 +1,35 @@
-.Adventureland {
-  font-family: "Princess Sofia";
-  color: darkblue;
-  font-size: 21px;
-  font-weight: 800;
-}
-
-.Fantasyland {
-  font-family: "Butterfly Kids";
-  color: darkblue;
-  font-size: 26px;
-  font-weight: 800;
-  background-color: #ffc5e0;
-}
-
-.MainStreetUSA {
-  font-family: "Old Standard TT";
-  color: darkblue;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.Discoveryland {
-  font-family: "Audiowide";
-  color: darkblue;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.Frontierland {
-  font-family: "Smokum";
-  color: darkblue;
-  font-size: 24px;
-  font-weight: 400;
-}
-
-#body {
-  margin: 0;
+html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 95vw;
 }
 
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -55,28 +37,144 @@
 }
 
 .header .landsFilters {
-  margin-top: -90px;
   display: -ms-grid;
   display: grid;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  margin-bottom: 50px;
-  width: 100%;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  -ms-grid-rows: (1fr)[6];
+      grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  width: 60%;
 }
 
-.header .landsFilters .landsFilters--button {
+.header .landsFilters .landsFilters__button {
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
 }
 
+@media (max-width: 500px) {
+  .header .landsFilters .landsFilters__button {
+    padding: 5px 5px;
+  }
+}
+
+.header .landsFilters .Adventureland {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: 1 / 1 / 3 / 4;
+  font-family: "Princess Sofia";
+  color: darkblue;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.header .landsFilters .Adventureland--active {
+  background-color: green;
+}
+
+@media (max-width: 500px) {
+  .header .landsFilters .Adventureland {
+    font-size: 16px;
+  }
+}
+
+.header .landsFilters .Fantasyland {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 3;
+  grid-area: 1 / 4 / 3 / 7;
+  font-family: "Butterfly Kids";
+  color: darkblue;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.header .landsFilters .Fantasyland--active {
+  background-color: #ffc5e0;
+}
+
+@media (max-width: 500px) {
+  .header .landsFilters .Fantasyland {
+    font-size: 18px;
+  }
+}
+
+.header .landsFilters .MainStreetUSA {
+  -ms-grid-row: 5;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-area: 5 / 2 / 7 / 6;
+  font-family: "Old Standard TT";
+  color: darkblue;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@media (max-width: 500px) {
+  .header .landsFilters .MainStreetUSA {
+    font-size: 14px;
+  }
+}
+
+.header .landsFilters .Discoveryland {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 3;
+  grid-area: 3 / 4 / 5 / 7;
+  font-family: "Audiowide";
+  color: darkblue;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 500px) {
+  .header .landsFilters .Discoveryland {
+    font-size: 12px;
+  }
+}
+
+.header .landsFilters .Frontierland {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: 3 / 1 / 5 / 4;
+  font-family: "Smokum";
+  color: darkblue;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+@media (max-width: 500px) {
+  .header .landsFilters .Frontierland {
+    font-size: 18px;
+  }
+}
+
+.header .landsFilters .allLandButton {
+  -ms-grid-row: 5;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 6;
+  -ms-grid-column-span: 1;
+  grid-area: 5 / 6 / 7 / 7;
+  color: darkblue;
+}
+
 .header .logo {
-  width: 30%;
+  width: 40%;
+  max-width: 400px;
 }
 
 @media (max-width: 500px) {
   .header .logo {
-    width: 20%;
+    width: 40%;
   }
 }
 
@@ -93,6 +191,12 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 50px;
+}
+
+@media (max-width: 500px) {
+  main {
+    margin: 10px;
+  }
 }
 
 main .attraction {
@@ -123,6 +227,12 @@ main .attraction .attractionInfo {
   width: 70%;
 }
 
+@media (max-width: 500px) {
+  main .attraction .attractionInfo {
+    font-size: 12px;
+  }
+}
+
 main .attraction .attractionInfo .closed {
   color: #cc0000;
 }
@@ -140,6 +250,12 @@ main .attraction .attractionKpi {
   display: flex;
   font-size: x-large;
   font-weight: 700;
+}
+
+@media (max-width: 500px) {
+  main .attraction .attractionKpi {
+    font-size: 18px;
+  }
 }
 
 h1 {
