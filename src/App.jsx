@@ -9,6 +9,8 @@ import { lands } from "./data/lands";
 
 function App() {
   
+  const [selectedLands, setSelectedLands] = useState([])
+
   // We get the data from the API
   const [disneylandData, setDisneylandData] = useState(null);
 
@@ -33,32 +35,18 @@ function App() {
     return <p>Chargement...</p>;
   }
 
-  console.log(disneylandData)
-
   const disneylandRides = []
 
-  disneylandData.map( (land) => 
+  selectedLands.map( (land) => 
     land.rides.map((ride) => {      
       ride.land = land.name;
       disneylandRides.push(ride)
     })
   );
 
-  console.log(disneylandRides)
-
-/*   // We ammend the data to add some info
-  const fantasilandRides = disneylandData[2].rides;
-  fantasilandRides.forEach(ride =>  {
-    ride.parc = "Disneyland";
-    ride.land = "Fantaisiland"
-  }); */
-
-  const [selectedLands, setSelectedLands] = useState([])
-
   // on trie par temps d'attente
   const disneylandRidesTimeDecending = [...disneylandRides].sort((a, b) => b.wait_time - a.wait_time );
   
-
   // Attractions
   const attractionsElementsListToDisplay = disneylandRidesTimeDecending.map((ride) =>  
     <Attraction key={ride.id}
@@ -74,7 +62,7 @@ function App() {
   return (
    <div>
 
-    <Header lands={disneylandData} selectedLands={selectedLands} setSelectedLands={selectedLands}/>
+    <Header lands={disneylandData} selectedLands={selectedLands} setSelectedLands={setSelectedLands}/>
     <main className="mainContainer">
         {attractionsElementsListToDisplay}    
     </main>

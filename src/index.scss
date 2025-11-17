@@ -1,5 +1,6 @@
 $warning-color: #cc0000;
 $fantasiland-bg-color: #ffc5e0;
+$maxWidth: 500px;
 
 .Adventureland{
     font-family: "Princess Sofia";
@@ -37,26 +38,22 @@ $fantasiland-bg-color: #ffc5e0;
     font-weight: 400;
 }
 
-body {
-  margin-right: 50px;
-  margin-left: 50px;
-  display: flex;
-  justify-content: center;
-  min-width: 320px;
-  min-height: 100vh;
+#body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .header{
     display: flex;
-    flex-direction: column;
     align-items: center;
     height: 200px;
     .landsFilters{
         margin-top: -90px;
-        display: flex;
+        display: grid;
         justify-content: space-around;
         margin-bottom: 50px;
-        width:80%;
+        width:100%;
         .landsFilters--button{
             border: none;
             border-radius: 20px;
@@ -64,13 +61,12 @@ body {
         }
     }
     .logo{
-        width: 400px;
-        margin-top: -100px;
-        
+        width: 30%;
+        @media (max-width: $maxWidth) {
+           width: 20%;
+          }
     }
 }
-
-
 
 h2, h3, p {
     margin:0;
