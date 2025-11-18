@@ -11,20 +11,29 @@ import { lands } from "./data/lands";
 function App() {
   
   const [selectedLands, setSelectedLands] = useState([])
+  const [selectedParc, setSelectedParc] = useState("Disneyland")
+
 
   // We get the data from the API
   const [disneylandData, setDisneylandData] = useState(null);
+  const [studioData, setStudioData] = useState(null);
 
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/parks/4/queue_times.json'); // 28 pour studio
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+        const responseD = await fetch('/api/parks/4/queue_times.json');
+        const responseS = await fetch('/api/parks/28/queue_times.json'); // 28 pour studio
+        if (!responseD.ok) {
+          throw new Error("Network response was not ok for DisneylandData");
         }
-        const data = await response.json();
-        setDisneylandData(data.lands);
+        if (!responseS.ok) {
+          throw new Error("Network response was not ok for StudioData");
+        }
+        const dataD = await responseD.json();
+        setDisneylandData(dataD.lands);
+        const dataS = await responseS.json();
+        setStudioData(dataS.lands);
       } catch (error) {
         console.error('Fetch error:', error);
       }
@@ -32,11 +41,12 @@ function App() {
     fetchData();
   }, []);
 
-  if (!disneylandData) {
+  if (!disneylandData || !studioData) {
     return <p>Chargement...</p>;
   }
 
-  const disneylandRides = []
+
+  const Rides = []
   const excludedId = []
 
   excludedAttractions.forEach((excludAtt)=>{excludedId.push(excludAtt.id)});
@@ -45,16 +55,16 @@ function App() {
     land.rides.map((ride) => {      
       ride.land = land.name;
       if(!excludedId.includes(ride.id)){
-        disneylandRides.push(ride)
+        Rides.push(ride)
       }
     })
   );
 
   // on trie par temps d'attente
-  const disneylandRidesTimeDecending = [...disneylandRides].sort((a, b) => b.wait_time - a.wait_time );
+  const RidesTimeDecending = [...Rides].sort((a, b) => b.wait_time - a.wait_time );
   
   // Attractions
-  const attractionsElementsListToDisplay = disneylandRidesTimeDecending.map((ride) =>  
+  const attractionsElementsListToDisplay = RidesTimeDecending.map((ride) =>  
     <Attraction key={ride.id}
       id={ride.id}
       name={ride.name}
@@ -67,7 +77,12 @@ function App() {
 
   return (
    <div className="app">
-      <Header lands={disneylandData} selectedLands={selectedLands} setSelectedLands={setSelectedLands}/>
+      <Header lands={selectedParc==="Disneyland"? disneylandData : studioData}
+        selectedLands={selectedLands}
+        setSelectedLands={setSelectedLands}
+        selectedParc={selectedParc}
+        setSelectedParc={setSelectedParc}
+        />
       <main className="mainContainer">
           {attractionsElementsListToDisplay}    
       </main>

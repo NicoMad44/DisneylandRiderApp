@@ -33,7 +33,29 @@ html, body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 200px;
+  margin-top: 20px;
+  gap: 5%;
+}
+
+.header .parcNavigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 25%;
+  max-height: 200px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+}
+
+.header .parcNavigation .logo {
+  max-height: 75px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .header .landsFilters {
@@ -45,13 +67,14 @@ html, body {
       grid-template-rows: repeat(6, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  width: 60%;
+  width: 75%;
 }
 
 .header .landsFilters .landsFilters__button {
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
+  color: darkblue;
 }
 
 @media (max-width: 500px) {
@@ -67,7 +90,6 @@ html, body {
   -ms-grid-column-span: 3;
   grid-area: 1 / 1 / 3 / 4;
   font-family: "Princess Sofia";
-  color: darkblue;
   font-size: 21px;
   font-weight: 800;
 }
@@ -90,7 +112,6 @@ html, body {
   -ms-grid-column-span: 3;
   grid-area: 1 / 4 / 3 / 7;
   font-family: "Butterfly Kids";
-  color: darkblue;
   font-size: 26px;
   font-weight: 800;
 }
@@ -112,7 +133,6 @@ html, body {
   -ms-grid-column-span: 4;
   grid-area: 5 / 2 / 7 / 6;
   font-family: "Old Standard TT";
-  color: darkblue;
   font-size: 18px;
   font-weight: 600;
 }
@@ -134,7 +154,6 @@ html, body {
   -ms-grid-column-span: 3;
   grid-area: 3 / 4 / 5 / 7;
   font-family: "Audiowide";
-  color: darkblue;
   font-size: 16px;
   font-weight: 500;
 }
@@ -157,7 +176,6 @@ html, body {
   -ms-grid-column-span: 3;
   grid-area: 3 / 1 / 5 / 4;
   font-family: "Smokum";
-  color: darkblue;
   font-size: 24px;
   font-weight: 400;
 }
@@ -173,6 +191,51 @@ html, body {
   }
 }
 
+.header .landsFilters .ProductionCourtyard {
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 4;
+  grid-area: 4 / 2 / 7 / 6;
+  font-family: "Limelight";
+  font-size: 15px;
+}
+
+.header .landsFilters .ProductionCourtyard--active {
+  background-color: brown;
+  color: white;
+}
+
+.header .landsFilters .ToonStudio {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 3;
+  grid-area: 1 / 4 / 4 / 7;
+  font-family: "Bangers";
+  font-size: 18px;
+}
+
+.header .landsFilters .ToonStudio--active {
+  background-color: red;
+  color: gold;
+}
+
+.header .landsFilters .MarvelAvengersCampus {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: 1 / 1 / 4 / 4;
+  font-family: "Bebas Neue";
+  font-size: 16px;
+}
+
+.header .landsFilters .MarvelAvengersCampus--active {
+  background-color: red;
+  color: white;
+}
+
 .header .landsFilters .allLandButton {
   -ms-grid-row: 5;
   -ms-grid-row-span: 2;
@@ -180,17 +243,6 @@ html, body {
   -ms-grid-column-span: 1;
   grid-area: 5 / 6 / 7 / 7;
   color: darkblue;
-}
-
-.header .logo {
-  width: 40%;
-  max-width: 400px;
-}
-
-@media (max-width: 500px) {
-  .header .logo {
-    width: 40%;
-  }
 }
 
 h2, h3, p {

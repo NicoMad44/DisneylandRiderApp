@@ -29,5 +29,23 @@ export const lands =
         "id": 18,
         "parc": "Disneyland",
 		"name": "Discoveryland"
+    },
+    {
+        "localid": 6,
+        "id": 906,
+        "parc": "Studio",
+		"name": "Marvel Avengers Campus"
+    },
+    {
+        "localid": 7,
+        "id": 26,
+        "parc": "Studio",
+		"name": "Production Courtyard"
+    },
+    {
+        "localid": 27,
+        "id": 26,
+        "parc": "Studio",
+		"name": "Toon Studio"
     }
 ]

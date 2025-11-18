@@ -21,18 +21,35 @@ html, body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 200px;
+    margin-top: 20px;
+    gap: 5%;
+    .parcNavigation{
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        max-height: 200px;
+        box-sizing: border-box;
+        overflow: hidden;
+        .logo{
+            max-height:75px;
+            object-fit: contain;
+            @media (max-width: $maxWidth) {
+   
+              }
+        }
+    }
     .landsFilters{
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: repeat(6, 1fr);        
         grid-column-gap: 10px;
         grid-row-gap: 10px;
-        width:60%;
+        width:75%;
         .landsFilters__button{
             border: none;
             border-radius: 20px;
             padding: 10px 20px;
+            color: darkblue;
             @media (max-width: $maxWidth) {
                 padding: 5px 5px;
                }
@@ -40,7 +57,6 @@ html, body{
         .Adventureland{
             grid-area: 1 / 1 / 3 / 4;
             font-family: "Princess Sofia";
-            color: darkblue;
             font-size: 21px;
             font-weight: 800;
             &--active{
@@ -54,7 +70,6 @@ html, body{
         .Fantasyland{
             grid-area: 1 / 4 / 3 / 7;
             font-family: "Butterfly Kids";
-            color: darkblue;
             font-size: 26px;
             font-weight: 800;
             &--active{
@@ -67,7 +82,6 @@ html, body{
         .MainStreetUSA{
             grid-area: 5 / 2 / 7 / 6; 
             font-family: "Old Standard TT";
-            color: darkblue;
             font-size: 18px;
             font-weight: 600;
             &--active{
@@ -80,7 +94,6 @@ html, body{
         .Discoveryland{
             grid-area: 3 / 4 / 5 / 7;;
             font-family: "Audiowide";
-            color: darkblue;
             font-size: 16px;
             font-weight: 500;
             &--active{
@@ -94,7 +107,6 @@ html, body{
         .Frontierland{
             grid-area: 3 / 1 / 5 / 4;
             font-family: "Smokum";
-            color: darkblue;
             font-size: 24px;
             font-weight: 400;
             &--active{
@@ -105,18 +117,41 @@ html, body{
                 font-size: 18px;
                }
         }
+        .ProductionCourtyard{
+            grid-area: 4 / 2 / 7 / 6;
+            font-family: "Limelight";
+            font-size: 15px;
+
+            &--active{
+                background-color: brown;
+                color: white;
+            }
+        }
+        .ToonStudio{
+            grid-area: 1 / 4 / 4 / 7;
+            font-family: "Bangers";
+            font-size: 18px;
+            &--active{
+                background-color: red;
+                color: gold;
+            }
+        }
+        .MarvelAvengersCampus{
+            grid-area: 1 / 1 / 4 / 4;
+            font-family: "Bebas Neue";
+            font-size: 16px;
+            &--active{
+                background-color: red;
+                color: white;
+            }
+        }
         .allLandButton{
             grid-area: 5 / 6 / 7 / 7; 
             color: darkblue;
         }
     }
-    .logo{
-        width: 40%;
-        max-width: 400px;
-        @media (max-width: $maxWidth) {
-           width: 40%;
-          }
-    }
+    
+
 }
 
 h2, h3, p {
