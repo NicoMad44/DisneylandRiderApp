@@ -20,6 +20,22 @@ function App() {
 
 
   useEffect(() => {
+      fetch('/api/parks/4/queue_times.json')
+          .then(
+            (response) => response.json()
+            .then((response) => setDisneylandData(response.lands))
+            .catch((error) => console.log(error))
+          )
+      fetch('/api/parks/28/queue_times.json')
+      .then(
+        (response) => response.json()
+        .then((response) => setStudioData(response.lands))
+        .catch((error) => console.log(error))
+      )
+    }, []
+  )
+
+/*   useEffect(() => {
     const fetchData = async () => {
       try {
         const responseD = await fetch('/api/parks/4/queue_times.json');
@@ -39,7 +55,7 @@ function App() {
       }
     };
     fetchData();
-  }, []);
+  }, []); */
 
   if (!disneylandData || !studioData) {
     return <p>Chargement...</p>;

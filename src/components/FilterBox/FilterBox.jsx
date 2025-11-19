@@ -29,7 +29,6 @@ export function FilterBox({lands, selectedLands,setSelectedLands }){
                     key="MickeyCache"
                     className="landsFilters__button allLandButton"
                     onClick={()=>{
-                        console.log(selectedLands.length===lands.length)
                         if(selectedLands.length===lands.length){
                             setSelectedLands([])
                             } else {
