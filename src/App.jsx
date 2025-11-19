@@ -3,8 +3,6 @@ import { Attraction } from "./components/Attraction/Attraction";
 import { Header } from "./components/Header/Header";
 import { excludedAttractions } from "./data/excludedAttractions";
 
-import { lands } from "./data/lands";
-
 
 
 
@@ -18,15 +16,6 @@ function App() {
   const [disneylandData, setDisneylandData] = useState(null);
   const [studioData, setStudioData] = useState(null);
 
-  const getApiUrl = (path) => {
-    if (import.meta.env.DEV) {
-      // En dev : on profite du proxy
-      return `/api${path}`;
-    } else {
-      // En prod : requête directe vers l’API distante
-      return `https://queue-times.com${path}`;
-    }
-  };
 
   useEffect(() => {
       fetch('https://rider-proxy.onrender.com/api/parks/4/queue_times.json'/* getApiUrl('/parks/4/queue_times.json') */)
@@ -43,28 +32,6 @@ function App() {
       )
     }, []
   )
-
-/*   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const responseD = await fetch('/api/parks/4/queue_times.json');
-        const responseS = await fetch('/api/parks/28/queue_times.json'); // 28 pour studio
-        if (!responseD.ok) {
-          throw new Error("Network response was not ok for DisneylandData");
-        }
-        if (!responseS.ok) {
-          throw new Error("Network response was not ok for StudioData");
-        }
-        const dataD = await responseD.json();
-        setDisneylandData(dataD.lands);
-        const dataS = await responseS.json();
-        setStudioData(dataS.lands);
-      } catch (error) {
-        console.error('Fetch error:', error);
-      }
-    };
-    fetchData();
-  }, []); */
 
   if (!disneylandData || !studioData) {
     return <p>Chargement...</p>;

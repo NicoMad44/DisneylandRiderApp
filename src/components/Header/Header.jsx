@@ -1,8 +1,7 @@
 
-import { useEffect, useState } from "react"
 import { FilterBox } from "../FilterBox/FilterBox"
 
-export function Header({lands, selectedLands, setSelectedLands, selectedParc, setSelectedParc}){
+export function Header({lands, selectedLands, setSelectedLands, setSelectedParc}){
 
     return (
         <header className="header" >
