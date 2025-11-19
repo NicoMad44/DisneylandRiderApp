@@ -29,13 +29,13 @@ function App() {
   };
 
   useEffect(() => {
-      fetch('http://localhost:4000/api/parks/4/queue_times.json'/* getApiUrl('/parks/4/queue_times.json') */)
+      fetch('https://rider-proxy.onrender.com/api/parks/4/queue_times.json'/* getApiUrl('/parks/4/queue_times.json') */)
           .then(
             (response) => response.json()
             .then((response) => setDisneylandData(response.lands))
             .catch((error) => console.log(error))
           )
-      fetch('http://localhost:4000/api/parks/4/queue_times.json')
+      fetch('https://rider-proxy.onrender.com/api/parks/28/queue_times.json')
       .then(
         (response) => response.json()
         .then((response) => setStudioData(response.lands))
