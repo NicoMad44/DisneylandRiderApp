@@ -9,7 +9,7 @@ export function Attraction({id, name, parc, land, QTime, openStatus}){
     return(
 
         <div key={id} className="attraction">
-            <img className="attractionIcon" src={`src/assets/images/${id}_icon.svg`} alt={`"Logo attraction ${name}`} />
+            <img className="attractionIcon" src={import.meta.env.BASE_URL + `images/${id}_icon.svg`} alt={`"Logo attraction ${name}`} />
             <div className="attractionInfo">
                 {title} {id}
                 
