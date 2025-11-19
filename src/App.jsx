@@ -18,15 +18,24 @@ function App() {
   const [disneylandData, setDisneylandData] = useState(null);
   const [studioData, setStudioData] = useState(null);
 
+  const getApiUrl = (path) => {
+    if (import.meta.env.DEV) {
+      // En dev : on profite du proxy
+      return `/api${path}`;
+    } else {
+      // En prod : requête directe vers l’API distante
+      return `https://queue-times.com${path}`;
+    }
+  };
 
   useEffect(() => {
-      fetch('/api/parks/4/queue_times.json')
+      fetch(getApiUrl('/parks/4/queue_times.json'))
           .then(
             (response) => response.json()
             .then((response) => setDisneylandData(response.lands))
             .catch((error) => console.log(error))
           )
-      fetch('/api/parks/28/queue_times.json')
+      fetch(getApiUrl('/parks/28/queue_times.json'))
       .then(
         (response) => response.json()
         .then((response) => setStudioData(response.lands))
