@@ -1,6 +1,6 @@
 
 
-export function FilterBox({lands, selectedLands,setSelectedLands }){
+export function FilterBox({lands, selectedLands,setSelectedLands, favoriteFilter, setFavoriteFilter }){
 
     const filterButtonClick = (e) => {
         if(!selectedLands.includes(e)) {
@@ -38,6 +38,16 @@ export function FilterBox({lands, selectedLands,setSelectedLands }){
                     } 
                     >{
                         selectedLands.length===lands.length ? "🗑️": "ALL"
+                    }
+                    </button>
+                    <button 
+                    key="MickeyCache2"
+                    className="landsFilters__button favoritebtn"
+                    onClick={()=>{
+                        setFavoriteFilter(!favoriteFilter)
+                    } }
+                    >{
+                        favoriteFilter ? "💛": "🩶"
                     }
                     </button>
 

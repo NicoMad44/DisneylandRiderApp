@@ -1,7 +1,7 @@
 
 import { FilterBox } from "../FilterBox/FilterBox"
 
-export function Header({lands, selectedLands, setSelectedLands, setSelectedParc}){
+export function Header({lands, selectedLands, setSelectedLands, setSelectedParc, favoriteFilter, setFavoriteFilter}){
 
     return (
         <header className="header" >
@@ -23,7 +23,9 @@ export function Header({lands, selectedLands, setSelectedLands, setSelectedParc}
             </nav>
             <FilterBox lands={lands}
                 selectedLands={selectedLands}
-                setSelectedLands={setSelectedLands}  />
+                setSelectedLands={setSelectedLands}
+                favoriteFilter={favoriteFilter}
+                setFavoriteFilter={setFavoriteFilter}  />
 
         </header>
 

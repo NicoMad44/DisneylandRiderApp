@@ -1,21 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export function Attraction({id, name, parc, land, QTime, openStatus}){
+export function Attraction({id, name, parc, land, QTime, openStatus, favoriteList, setFavoriteList}){
  
-    const title = openStatus ? 
-            <h3>{name}</h3> 
-            :
-            <div><h3 className="closed">{id}-{name} - Fermé 😣</h3>  </div>
 
     const [src, setSrc] = useState(
         `${import.meta.env.BASE_URL}images/${id}_icon.svg`
         );
     
-        const handleError = () => {
-        setSrc(`${import.meta.env.BASE_URL}images/${id}_icon.png`);
-        };
+    const [isFavorite, setIsFavorite] = useState( favoriteList.includes(id)? true : false)
 
 
+    const handleClick = () => {
+        if(!isFavorite && !favoriteList.includes(id)){
+           setFavoriteList(prevList => [...prevList, id]);
+        } else if (isFavorite && favoriteList.includes(id)){
+            setFavoriteList(prevFavoriteList => prevFavoriteList.filter(att => att !== id));
+        }
+        setIsFavorite(!isFavorite);
+    }
+
+    const handleError = () => {
+    setSrc(`${import.meta.env.BASE_URL}images/${id}_icon.png`);
+    };
+
+    const title = openStatus ? 
+    <h3>{name}</h3> 
+    :
+    <div><h3 className="closed">{name} - Fermé 😣</h3>  </div>
             
     return(
 
@@ -26,12 +37,16 @@ export function Attraction({id, name, parc, land, QTime, openStatus}){
                 alt={`"Logo attraction ${name}`} 
                 />
             <div className="attractionInfo">
-                {title} {id}
-                
-                <div className="location">
-                    <p>{parc}</p>
-                    <p>{land}</p>
-                </div>
+                {title} 
+            </div>
+            <div className="location">
+                    <p className="location__info">{parc}</p>
+                    <p className={`location__info--${land}`}>{land}</p>
+            </div>
+            <div className="favorite"
+                onClick={handleClick}
+            >
+                {isFavorite? "💛" : "🩶"}
             </div>
             <div className="attractionKpi">
                 {QTime} min

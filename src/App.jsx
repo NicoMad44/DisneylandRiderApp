@@ -12,6 +12,8 @@ function App() {
   
   const [selectedLands, setSelectedLands] = useState([])
   const [selectedParc, setSelectedParc] = useState("Disneyland")
+  const [favoriteList, setFavoriteList] = useState([])
+  const [favoriteFilter, setFavoriteFilter] = useState(false)
 
 
   // We get the data from the API
@@ -35,6 +37,19 @@ function App() {
     }, []
   )
 
+/*   useEffect(()=>{
+    console.log(favoriteList)
+  
+    if(favoriteFilter){
+      favoriteList.forEach((excludAttid)=>{excludedId.push(excludAttid)});
+    } else {
+      favoriteList.forEach((excludAttid)=>{excludedId.filter((id)=>id!==excludAttid)})
+    }
+    console.log(favoriteList)
+    console.log(excludedId)
+    }, [favoriteList, favoriteFilter]) */
+
+
   if (!disneylandData || !studioData) {
     return <p>Chargement...</p>;
   }
@@ -44,12 +59,20 @@ function App() {
   const excludedId = []
 
   excludedAttractions.forEach((excludAtt)=>{excludedId.push(excludAtt.id)});
-
+  
+  
   selectedLands.map( (land) => 
     land.rides.map((ride) => {      
       ride.land = land.name;
-      if(!excludedId.includes(ride.id)){
-        Rides.push(ride)
+      ride.parc = selectedParc;
+      if(favoriteFilter){
+        if(!excludedId.includes(ride.id) && favoriteList.includes(ride.id)){
+          Rides.push(ride)
+        }
+      } else {
+        if(!excludedId.includes(ride.id)){
+          Rides.push(ride)
+        }
       }
     })
   );
@@ -66,6 +89,8 @@ function App() {
       land={ride.land}
       QTime={ride.wait_time}
       openStatus={ride.is_open}
+      favoriteList={favoriteList}
+      setFavoriteList={setFavoriteList}
       />
   )
 
@@ -95,6 +120,8 @@ function App() {
         setSelectedLands={setSelectedLands}
         selectedParc={selectedParc}
         setSelectedParc={setSelectedParc}
+        favoriteFilter={favoriteFilter}
+        setFavoriteFilter={setFavoriteFilter}
         />
       <main className="mainContainer">
           {attractionsElementsListToDisplay}    
