@@ -6,6 +6,8 @@ import { excludedAttractions } from "./data/excludedAttractions";
 
 
 
+
+
 function App() {
   
   const [selectedLands, setSelectedLands] = useState([])
@@ -68,7 +70,26 @@ function App() {
   )
 
   return (
+   
+   
+   
+   
    <div className="app">
+
+      {/* <BrowserRouter>
+        <Header />
+        <main>
+          <RouterNM lands={selectedParc==="Disneyland"? disneylandData : studioData}
+        selectedLands={selectedLands}
+        setSelectedLands={setSelectedLands}
+        selectedParc={selectedParc}
+        setSelectedParc={setSelectedParc}
+        excludedAttractions={excludedAttractions}
+        />
+        </main>
+        <Footer />
+      </BrowserRouter> */}
+
       <Header lands={selectedParc==="Disneyland"? disneylandData : studioData}
         selectedLands={selectedLands}
         setSelectedLands={setSelectedLands}
