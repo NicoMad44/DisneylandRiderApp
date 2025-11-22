@@ -3,11 +3,6 @@ import { Attraction } from "./components/Attraction/Attraction";
 import { Header } from "./components/Header/Header";
 import { excludedAttractions } from "./data/excludedAttractions";
 
-
-
-
-
-
 function App() {
   
   const [selectedLands, setSelectedLands] = useState([])
@@ -17,19 +12,22 @@ function App() {
   const [timeFilter, setTimeFilter] = useState(300)
 
 
+
   // We get the data from the API
   const [disneylandData, setDisneylandData] = useState(null);
   const [studioData, setStudioData] = useState(null);
 
+  const disneylandURL = "src/data/offlineDevDisneyAPIfile.json"//'https://rider-proxy.onrender.com/api/parks/4/queue_times.json';
+  const studioURL = "src/data/offlineDevStudioAPIfile.json"//'https://rider-proxy.onrender.com/api/parks/28/queue_times.json';
 
   useEffect(() => {
-      fetch('https://rider-proxy.onrender.com/api/parks/4/queue_times.json'/* getApiUrl('/parks/4/queue_times.json') */)
+      fetch(disneylandURL/* getApiUrl('/parks/4/queue_times.json') */)
           .then(
             (response) => response.json()
             .then((response) => setDisneylandData(response.lands))
             .catch((error) => console.log(error))
           )
-      fetch('https://rider-proxy.onrender.com/api/parks/28/queue_times.json')
+      fetch(studioURL)
       .then(
         (response) => response.json()
         .then((response) => setStudioData(response.lands))

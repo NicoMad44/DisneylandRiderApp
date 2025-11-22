@@ -1,5 +1,6 @@
 $warning-color: #cc0000;
 $fantasiland-bg-color: #ffc5e0;
+$mainTextColor: darkblue;
 $maxWidth: 500px;
 
 
@@ -56,7 +57,8 @@ html, body{
                 border: none;
                 border-radius: 20px;
                 padding: 10px 20px;
-                color: darkblue;
+                color: $mainTextColor;
+                ;
                 @media (max-width: $maxWidth) {
                     padding: 5px 5px;
                    }
@@ -160,6 +162,41 @@ html, body{
                 grid-area: 5 / 1 / 7 / 2;
     
             }
+        }
+    }
+
+    .slider{
+        display: flex;
+        flex-direction: column;
+        gap: 10%;
+        width: 100%;
+        &__intro{
+            font-size: 14px;
+            font-weight: 550;
+            color: $mainTextColor;
+            text-align: right;
+            @media (max-width: $maxWidth) {
+                font-size: 14px;
+               }
+        }
+        &__barAndValue{
+            display: flex;
+            width: 100%;
+            gap: 10%;
+           align-items: center;
+        }
+        &__value{
+            font-size: 18px;
+            font-weight: 700;
+            color: $mainTextColor;
+
+            @media (max-width: $maxWidth) {
+                font-size: 16px;
+               }
+        }
+        &__bar{
+            width: 70%;
+            color: $mainTextColor;
         }
     }
 }
