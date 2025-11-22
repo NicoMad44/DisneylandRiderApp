@@ -14,6 +14,7 @@ function App() {
   const [selectedParc, setSelectedParc] = useState("Disneyland")
   const [favoriteList, setFavoriteList] = useState([])
   const [favoriteFilter, setFavoriteFilter] = useState(false)
+  const [timeFilter, setTimeFilter] = useState(300)
 
 
   // We get the data from the API
@@ -66,11 +67,11 @@ function App() {
       ride.land = land.name;
       ride.parc = selectedParc;
       if(favoriteFilter){
-        if(!excludedId.includes(ride.id) && favoriteList.includes(ride.id)){
+        if(!excludedId.includes(ride.id) && favoriteList.includes(ride.id) && ride.wait_time<timeFilter){
           Rides.push(ride)
         }
       } else {
-        if(!excludedId.includes(ride.id)){
+        if(!excludedId.includes(ride.id) && ride.wait_time<timeFilter){
           Rides.push(ride)
         }
       }
@@ -122,6 +123,8 @@ function App() {
         setSelectedParc={setSelectedParc}
         favoriteFilter={favoriteFilter}
         setFavoriteFilter={setFavoriteFilter}
+        timeFilter={timeFilter}
+        setTimeFilter={setTimeFilter}
         />
       <main className="mainContainer">
           {attractionsElementsListToDisplay}    

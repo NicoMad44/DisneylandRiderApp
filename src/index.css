@@ -27,9 +27,11 @@ html, body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -37,7 +39,21 @@ html, body {
   gap: 5%;
 }
 
-.header .parcNavigation {
+.header .topHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5%;
+}
+
+.header .topHeader .parcNavigation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,13 +68,13 @@ html, body {
   overflow: hidden;
 }
 
-.header .parcNavigation .logo {
+.header .topHeader .parcNavigation .logo {
   max-height: 75px;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.header .landsFilters {
+.header .topHeader .landsFilters {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[6];
@@ -70,7 +86,7 @@ html, body {
   width: 75%;
 }
 
-.header .landsFilters .landsFilters__button {
+.header .topHeader .landsFilters .landsFilters__button {
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
@@ -78,12 +94,12 @@ html, body {
 }
 
 @media (max-width: 500px) {
-  .header .landsFilters .landsFilters__button {
+  .header .topHeader .landsFilters .landsFilters__button {
     padding: 5px 5px;
   }
 }
 
-.header .landsFilters .Adventureland {
+.header .topHeader .landsFilters .Adventureland {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
@@ -94,18 +110,18 @@ html, body {
   font-weight: 800;
 }
 
-.header .landsFilters .Adventureland--active {
+.header .topHeader .landsFilters .Adventureland--active {
   background-color: green;
   color: white;
 }
 
 @media (max-width: 500px) {
-  .header .landsFilters .Adventureland {
+  .header .topHeader .landsFilters .Adventureland {
     font-size: 16px;
   }
 }
 
-.header .landsFilters .Fantasyland {
+.header .topHeader .landsFilters .Fantasyland {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   -ms-grid-column: 4;
@@ -116,17 +132,17 @@ html, body {
   font-weight: 800;
 }
 
-.header .landsFilters .Fantasyland--active {
+.header .topHeader .landsFilters .Fantasyland--active {
   background-color: #ffc5e0;
 }
 
 @media (max-width: 500px) {
-  .header .landsFilters .Fantasyland {
+  .header .topHeader .landsFilters .Fantasyland {
     font-size: 18px;
   }
 }
 
-.header .landsFilters .MainStreetUSA {
+.header .topHeader .landsFilters .MainStreetUSA {
   -ms-grid-row: 5;
   -ms-grid-row-span: 2;
   -ms-grid-column: 2;
@@ -137,17 +153,17 @@ html, body {
   font-weight: 600;
 }
 
-.header .landsFilters .MainStreetUSA--active {
+.header .topHeader .landsFilters .MainStreetUSA--active {
   background-color: goldenrod;
 }
 
 @media (max-width: 500px) {
-  .header .landsFilters .MainStreetUSA {
+  .header .topHeader .landsFilters .MainStreetUSA {
     font-size: 14px;
   }
 }
 
-.header .landsFilters .Discoveryland {
+.header .topHeader .landsFilters .Discoveryland {
   -ms-grid-row: 3;
   -ms-grid-row-span: 2;
   -ms-grid-column: 4;
@@ -158,18 +174,18 @@ html, body {
   font-weight: 500;
 }
 
-.header .landsFilters .Discoveryland--active {
+.header .topHeader .landsFilters .Discoveryland--active {
   background-color: blueviolet;
   color: white;
 }
 
 @media (max-width: 500px) {
-  .header .landsFilters .Discoveryland {
+  .header .topHeader .landsFilters .Discoveryland {
     font-size: 12px;
   }
 }
 
-.header .landsFilters .Frontierland {
+.header .topHeader .landsFilters .Frontierland {
   -ms-grid-row: 3;
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
@@ -180,18 +196,18 @@ html, body {
   font-weight: 400;
 }
 
-.header .landsFilters .Frontierland--active {
+.header .topHeader .landsFilters .Frontierland--active {
   background-color: brown;
   color: white;
 }
 
 @media (max-width: 500px) {
-  .header .landsFilters .Frontierland {
+  .header .topHeader .landsFilters .Frontierland {
     font-size: 18px;
   }
 }
 
-.header .landsFilters .ProductionCourtyard {
+.header .topHeader .landsFilters .ProductionCourtyard {
   -ms-grid-row: 4;
   -ms-grid-row-span: 3;
   -ms-grid-column: 2;
@@ -201,12 +217,12 @@ html, body {
   font-size: 15px;
 }
 
-.header .landsFilters .ProductionCourtyard--active {
+.header .topHeader .landsFilters .ProductionCourtyard--active {
   background-color: brown;
   color: white;
 }
 
-.header .landsFilters .ToonStudio {
+.header .topHeader .landsFilters .ToonStudio {
   -ms-grid-row: 1;
   -ms-grid-row-span: 3;
   -ms-grid-column: 4;
@@ -216,12 +232,12 @@ html, body {
   font-size: 18px;
 }
 
-.header .landsFilters .ToonStudio--active {
+.header .topHeader .landsFilters .ToonStudio--active {
   background-color: red;
   color: gold;
 }
 
-.header .landsFilters .MarvelAvengersCampus {
+.header .topHeader .landsFilters .MarvelAvengersCampus {
   -ms-grid-row: 1;
   -ms-grid-row-span: 3;
   -ms-grid-column: 1;
@@ -231,12 +247,12 @@ html, body {
   font-size: 16px;
 }
 
-.header .landsFilters .MarvelAvengersCampus--active {
+.header .topHeader .landsFilters .MarvelAvengersCampus--active {
   background-color: red;
   color: white;
 }
 
-.header .landsFilters .allLandButton {
+.header .topHeader .landsFilters .allLandButton {
   -ms-grid-row: 5;
   -ms-grid-row-span: 2;
   -ms-grid-column: 6;
@@ -245,7 +261,7 @@ html, body {
   color: darkblue;
 }
 
-.header .landsFilters .favoritebtn {
+.header .topHeader .landsFilters .favoritebtn {
   -ms-grid-row: 5;
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;

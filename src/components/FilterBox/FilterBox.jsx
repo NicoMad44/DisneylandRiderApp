@@ -50,6 +50,7 @@ export function FilterBox({lands, selectedLands,setSelectedLands, favoriteFilter
                         favoriteFilter ? "💛": "🩶"
                     }
                     </button>
+                    
 
             </div>
     )
