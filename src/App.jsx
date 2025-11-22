@@ -7,7 +7,7 @@ function App() {
   
   const [selectedLands, setSelectedLands] = useState([])
   const [selectedParc, setSelectedParc] = useState("Disneyland")
-  const [favoriteList, setFavoriteList] = useState([])
+  const [favoriteList, setFavoriteList] = useState(JSON.parse(window.localStorage.getItem("favorite")))
   const [favoriteFilter, setFavoriteFilter] = useState(false)
   const [timeFilter, setTimeFilter] = useState(300)
 

@@ -19,6 +19,11 @@ export function Attraction({id, name, parc, land, QTime, openStatus, favoriteLis
         setIsFavorite(!isFavorite);
     }
 
+    useEffect(()=>{
+        window.localStorage.removeItem("favorite");
+        window.localStorage.setItem("favorite", JSON.stringify(favoriteList));
+    },[favoriteList])
+
     const handleError = () => {
     setSrc(`${import.meta.env.BASE_URL}images/${id}_icon.png`);
     };
