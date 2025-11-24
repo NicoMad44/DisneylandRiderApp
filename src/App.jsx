@@ -36,29 +36,14 @@ function App() {
     }, []
   )
 
-/*   useEffect(()=>{
-    console.log(favoriteList)
-  
-    if(favoriteFilter){
-      favoriteList.forEach((excludAttid)=>{excludedId.push(excludAttid)});
-    } else {
-      favoriteList.forEach((excludAttid)=>{excludedId.filter((id)=>id!==excludAttid)})
-    }
-    console.log(favoriteList)
-    console.log(excludedId)
-    }, [favoriteList, favoriteFilter]) */
-
-
   if (!disneylandData || !studioData) {
     return <p>Chargement...</p>;
   }
-
 
   const Rides = []
   const excludedId = []
 
   excludedAttractions.forEach((excludAtt)=>{excludedId.push(excludAtt.id)});
-  
   
   selectedLands.map( (land) => 
     land.rides.map((ride) => {      
@@ -127,6 +112,8 @@ function App() {
       <main className="mainContainer">
           {attractionsElementsListToDisplay}    
       </main>
+      <footer>
+      </footer>
    </div>
   )
 }

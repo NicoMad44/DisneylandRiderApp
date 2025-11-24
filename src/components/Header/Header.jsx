@@ -11,8 +11,9 @@ export function Header({lands, selectedLands, setSelectedLands, setSelectedParc,
                     <img className="logo" src={import.meta.env.BASE_URL + 'images/Parc_Disneyland_Paris_logo.png'}
                         alt={"Logo Euro Disney"}
                         onClick={()=>{
-                            setSelectedParc("Disneyland")
+                            setSelectedParc("Disneyland");
                             setSelectedLands([]);
+                            setFavoriteFilter(false);
                             }
                         } />
                     <img className="logo" src={import.meta.env.BASE_URL + "images/500px-Parc_Walt_Disney_Studios_logo_2.png"}
@@ -20,6 +21,7 @@ export function Header({lands, selectedLands, setSelectedLands, setSelectedParc,
                     onClick={()=>{
                         setSelectedParc("Studio")
                         setSelectedLands([]);
+                        setFavoriteFilter(false);
                         }
                     } />
                 </nav>
